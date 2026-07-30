@@ -82,7 +82,3 @@ Open http://localhost:5173 and log in with:
 - **hr** – manage employees, attendance, leave approvals, payroll, reviews
 - **employee** – view data, apply for leave, check in/out
 
-## Notes
-
-- Passwords are hashed with bcrypt; sessions are stateless JWTs (8h expiry by default).
-- Extend this base by adding features like file uploads (employee photos/documents), email notifications for leave approvals, or PDF payslip export.
