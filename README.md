@@ -156,12 +156,3 @@ Open **http://localhost:5173** and log in with:
 
 ---
 
-## 📄 License
-
-This project is open-source and available under the MIT License.
-
-<div align="center">
-
-Made with ❤️ for streamlined workforce management
-
-</div>
