@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://employee-management-system-56j5.onrender.com/api
+  baseURL: 'https://employee-management-system-56j5.onrender.com/api',
 });
 
 // Attach the JWT token (if present) to every outgoing request
