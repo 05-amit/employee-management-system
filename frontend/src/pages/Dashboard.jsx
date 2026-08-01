@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import { getUser } from '../auth';
 
@@ -23,12 +22,6 @@ const icons = {
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>
-  ),
-  arrow: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
-    </svg>
   )
 };
 
@@ -42,7 +35,6 @@ function greeting() {
 export default function Dashboard() {
   const user = getUser();
   const [stats, setStats] = useState({ employees: 0, pendingLeaves: 0, presentToday: 0 });
-  const [pendingList, setPendingList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -58,7 +50,6 @@ export default function Dashboard() {
           pendingLeaves: leaveRes.data.length,
           presentToday: attRes.data.filter((a) => a.status === 'present').length
         });
-        setPendingList(leaveRes.data.slice(0, 5));
       } catch (err) {
         console.error('Failed to load dashboard stats', err);
       } finally {
@@ -101,59 +92,6 @@ export default function Dashboard() {
           <div>
             <div className="stat-value">{loading ? '—' : stats.pendingLeaves}</div>
             <div className="stat-label">Pending Leave Requests</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="dash-grid">
-        <div className="card dash-panel">
-          <div className="dash-panel-header">
-            <h2>Pending Leave Requests</h2>
-            <Link to="/leave" className="dash-panel-link">View all {icons.arrow}</Link>
-          </div>
-          {pendingList.length === 0 && !loading && (
-            <p className="dash-empty">Nothing pending — all caught up.</p>
-          )}
-          {pendingList.length > 0 && (
-            <table className="data-table dash-mini-table">
-              <tbody>
-                {pendingList.map((l) => (
-                  <tr key={l.id}>
-                    <td>
-                      <div className="dash-emp-name">{l.full_name}</div>
-                      <div className="dash-emp-code">{l.employee_code}</div>
-                    </td>
-                    <td className="dash-leave-type">{l.leave_type}</td>
-                    <td className="dash-leave-dates">
-                      {new Date(l.start_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
-                      {' – '}
-                      {new Date(l.end_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
-                    </td>
-                    <td><span className="badge badge-pending">{l.status}</span></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-
-        <div className="card dash-panel">
-          <div className="dash-panel-header">
-            <h2>Quick Actions</h2>
-          </div>
-          <div className="dash-actions">
-            <Link to="/employees" className="dash-action">
-              <span>Manage Employees</span>{icons.arrow}
-            </Link>
-            <Link to="/attendance" className="dash-action">
-              <span>Mark Attendance</span>{icons.arrow}
-            </Link>
-            <Link to="/leave" className="dash-action">
-              <span>Review Leave Requests</span>{icons.arrow}
-            </Link>
-            <Link to="/payroll" className="dash-action">
-              <span>Run Payroll</span>{icons.arrow}
-            </Link>
           </div>
         </div>
       </div>
