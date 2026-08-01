@@ -296,6 +296,9 @@ input:focus, select:focus, textarea:focus {
 .stat-value { font-size: 30px; font-weight: 700; color: var(--navy); line-height: 1.1; }
 .stat-label { color: var(--text-muted); font-size: 13px; margin-top: 2px; }
  
+@media (max-width: 900px) {
+  .stat-grid { grid-template-columns: 1fr; }
+}
 
 /* Table */
 .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: var(--radius); overflow: hidden; }
