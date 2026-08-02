@@ -124,6 +124,7 @@ export default function Login() {
             'Sign in'
           )}
         </button>
+        <p>password= Admin@123</p>
 
         
       </form>
