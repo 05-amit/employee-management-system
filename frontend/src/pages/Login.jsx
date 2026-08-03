@@ -124,11 +124,11 @@ export default function Login() {
             'Sign in'
           )}
         </button>
-        <p>password= Admin@123</p>
 
-        
+        <p className="auth-hint">
+          Default admin: <strong>admin@company.com</strong> / <strong>Admin@123</strong>
+        </p>
       </form>
     </div>
   );
 }
-
