@@ -126,7 +126,7 @@ export default function Login() {
         </button>
 
         <p className="auth-hint">
-          Default admin: <strong>admin@company.com</strong> / <strong>Admin@123</strong>
+           Admin password: <strong>Admin@123</strong>
         </p>
       </form>
     </div>
